@@ -132,11 +132,17 @@ int main()
     // }
 
     cout << "base pairs matched index: " << endl;
+    string dot_bracket(n, '.');
+    cout << dot_bracket << endl;
     for (auto pr : dp[0][n - 1].second)
     {
         cout << pr.first << "--" << pr.second;
         cout << endl;
+        int left = min(pr.first, pr.second);
+        int right = max(pr.first, pr.second);
+        dot_bracket[left] = '(';
+        dot_bracket[right] = ')';
     }
-
+    cout << dot_bracket << endl;
     return 0;
 }
