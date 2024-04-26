@@ -22,7 +22,7 @@ void findSecStruct(vector<vector<pair<int, set<pair<int, int>>>>> &dp, string rn
         }
     }
 
-    cout << "1\n";
+    // cout << "1\n";
 
     for (int k = 5; k < n; k++)
     {
@@ -99,7 +99,7 @@ int main()
     cin >> rna_seq;
 
     int n = rna_seq.size();
-    cout << n << endl;
+    // cout << n << endl;
 
     vector<vector<pair<int, set<pair<int, int>>>>> dp(n, vector<pair<int, set<pair<int, int>>>>(n, {-1, set<pair<int, int>>()}));
 
@@ -114,11 +114,11 @@ int main()
     //     cout << "\n";
     // }
 
-    cout << dp[3][2].second.size() << endl;
+    // cout << dp[3][2].second.size() << endl;
 
     findSecStruct(dp, rna_seq, n);
-    cout << "answer: ";
-    cout << dp[0][n - 1].first << endl;
+    // cout << "answer: ";
+    // cout << dp[0][n - 1].first << endl;
 
     // cout << "table: " << endl;
 
@@ -131,13 +131,13 @@ int main()
     //     cout << "\n";
     // }
 
-    cout << "base pairs matched index: " << endl;
+    // cout << "base pairs matched index: " << endl;
     string dot_bracket(n, '.');
-    cout << dot_bracket << endl;
+    // cout << dot_bracket << endl;
     for (auto pr : dp[0][n - 1].second)
     {
-        cout << pr.first << "--" << pr.second;
-        cout << endl;
+        // cout << pr.first << "--" << pr.second;
+        // cout << endl;
         int left = min(pr.first, pr.second);
         int right = max(pr.first, pr.second);
         dot_bracket[left] = '(';
