@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS F364 Design and Analysis of Algorithms</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CS F364 Design and Analysis of Algorithms</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
-</head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+      <h1 class="text-4xl font-bold text-center mb-2">
+        CS F364 Design and Analysis of Algorithms
+      </h1>
+      <h2 class="text-2xl font-semibold text-center mb-8">
+        Assignment 2: RNA Folding Problem
+      </h2>
 
-<body class="bg-gray-100">
-  <div class="container mx-auto py-8">
-    <h1 class="text-4xl font-bold text-center mb-2">
-      CS F364 Design and Analysis of Algorithms
-    </h1>
-    <h2 class="text-2xl font-semibold text-center mb-8">
-      Assignment 2: RNA Folding Problem
-    </h2>
+      <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <h3 class="text-2xl font-semibold mb-4">Problem Description</h3>
+        <p class="mb-4">
+          Ribonucleic Acid, more commonly known as RNA, is a single-stranded
+          biological molecule. However, much of their behaviour is defined by
+          the Secondary Structure they fold into. These Secondary Structures
+          form via the matching up of base pairs, with the rule being that A can
+          only match with U, whereas C always matches with G. The match-up can
+          also must ensure that the overall structure stays kink-free and
+          knot-free. Our problem deals with finding the secondary structure with
+          the maximum number of base pairs, for a given RNA sequence.
+        </p>
+      </div>
 
-    <div class="bg-white rounded-lg shadow-md p-8 mb-8">
-      <h3 class="text-2xl font-semibold mb-4">Problem Description</h3>
-      <p class="mb-4">
-        Ribonucleic Acid, more commonly known as RNA, is a single-stranded biological molecule. However, much of their
-        behaviour is defined by the Secondary Structure they fold into. These Secondary Structures form via the matching
-        up of base pairs, with the rule being that A can only match with U, whereas C always matches with G. The
-        match-up can also must ensure that the overall structure stays kink-free and knot-free.
-
-
-        Our problem deals with finding the secondary structure with the maximum number of base pairs, for a given RNA
-        sequence.
-      </p>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-md p-8 mb-8">
-      <h3 class="text-2xl font-semibold mb-4">Algorithm Pseudocode</h3>
-      <p class="mb-4">
-
-      </p>
-      <pre class="bg-gray-200 p-4 rounded"><code>Initialize OPT(i,j) = 0 whenever i >= j - 4
+      <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <h3 class="text-2xl font-semibold mb-4">Algorithm Pseudocode</h3>
+        <p class="mb-4"></p>
+        <pre
+          class="bg-gray-200 p-4 rounded"
+        ><code>Initialize OPT(i,j) = 0 whenever i >= j - 4
   For k = 5, 6, ... n - 1
     For i = 1, 2, ... n - k
       Set  j = i + k
@@ -44,7 +46,7 @@
 t ranges from 1 to j - 5 such that it is allowed to pair with j.
                                                     
       </code></pre>
-    </div>
+      </div>
 
     <div class="bg-white rounded-lg shadow-md p-8 mb-8">
       <h3 class="text-2xl font-semibold mb-4">Experimental Results</h3>
@@ -97,20 +99,47 @@ t ranges from 1 to j - 5 such that it is allowed to pair with j.
       </p>
     </div>
 
-    <div class="bg-white rounded-lg shadow-md p-8 mb-8">
-      <h3 class="text-2xl font-semibold mb-4">Algorithm Documentation</h3>
-      <p class="mb-4">
-        Algorithm documentation can be found
-        <b><a href="draw_rna-master\example_files\html\rna_8cpp.html" target="_blank"
-            class="no-underline hover:underline">here</a></b>.
-      </p>
-      <!-- <pre
+      <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <h3 class="text-2xl font-semibold mb-4">Algorithm Documentation</h3>
+        <p class="mb-4">
+          Algorithm documentation can be found
+          <b
+            ><a
+              href="draw_rna-master\example_files\html\rna_8cpp.html"
+              target="_blank"
+              class="no-underline hover:underline"
+              >here</a
+            ></b
+          >.
+        </p>
+        <!-- <pre
           class="bg-gray-200 p-4 rounded"
         ><code>/* Your algorithm code goes here */</code></pre> -->
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <h3 class="text-2xl font-semibold mb-4">References</h3>
+        <p class="mb-4">
+          <!-- Algorithm documentation can be found
+          <b
+            ><a
+              href="draw_rna-master\example_files\html\rna_8cpp.html"
+              target="_blank"
+              class="no-underline hover:underline"
+              >here</a
+            ></b
+          >. -->
+          RNAcentral. (2024). The non-coding RNA sequence database. Retrieved
+          from https://rnacentral.org/
+        </p>
+        <p>
+          Sharma, S. (2021). Finding Secondary Structure of RNA using Dynamic
+          Programming over intervals. Medium.
+        </p>
+        <!-- <pre
+          class="bg-gray-200 p-4 rounded"
+        ><code>/* Your algorithm code goes here */</code></pre> -->
+      </div>
     </div>
-
-
-  </div>
-</body>
-
+  </body>
 </html>
