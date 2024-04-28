@@ -25,9 +25,9 @@
           Ribonucleic Acid, more commonly known as RNA, is a single-stranded
           biological molecule. However, much of their behaviour is defined by
           the Secondary Structure they fold into. These Secondary Structures
-          form via the matching up of base pairs, with the rule being that A can
-          only match with U, whereas C always matches with G. The match-up can
-          also must ensure that the overall structure stays kink-free and
+          form via the matching up of base pairs, with the rule being that Adenine (A) can
+          only match with Uracil (U), whereas Cytosine(C) always matches with Guanine(G). The match-up can
+          also must ensure that the overall structure stays kink-free (A base can be matched with another base if there are at least 4 other bases in between them) and
           knot-free. Our problem deals with finding the secondary structure with
           the maximum number of base pairs, for a given RNA sequence.
         </p>
@@ -35,17 +35,20 @@
 
       <div class="bg-white rounded-lg shadow-md p-8 mb-8">
         <h3 class="text-2xl font-semibold mb-4">Algorithm Pseudocode</h3>
-        <p class="mb-4"></p>
+        <p class="mb-4">
+          We use a dynamic programming approach to the solve the problem. The recurrence relation and the pseudocode is as given below.
+        </p>
         <pre
           class="bg-gray-200 p-4 rounded"
-        ><code>Initialize OPT(i,j) = 0 whenever i >= j - 4
-  For k = 5, 6, ... n - 1
-    For i = 1, 2, ... n - k
-      Set  j = i + k
-      OPT(i,j) = max{OPT(i,j-1), max{1 + OPT(i,t-1) + OPT(t+1,j-1)}}
-t ranges from 1 to j - 5 such that it is allowed to pair with j.
-                                                    
-      </code></pre>
+        ><code>OPT(i,j) is the maximum number of base pairs in a secondary structure for bi bi+1 … bj. 
+OPT(i,j) = 0, if i≥j-4.
+Initialize OPT(i,j) = 0 whenever i >= j - 4
+For k = 5, 6, ... n - 1
+  For i = 1, 2, ... n - k
+    Set  j = i + k
+    OPT(i,j) = max{OPT(i,j-1), max{1 + OPT(i,t-1) + OPT(t+1,j-1)}}
+
+t ranges from 1 to j - 5 such that it is allowed to pair with j.</code></pre>
       </div>
 
     <div class="bg-white rounded-lg shadow-md p-8 mb-8">
@@ -56,6 +59,8 @@ t ranges from 1 to j - 5 such that it is allowed to pair with j.
         <img src="1.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md">
         <img src="1_central.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md">
         </div>
+        Maximum number of base pairs possible from RNA sequence - 44</p><p>
+        Number of base pairs in actual structure - 37
       </p>
       <p class="mb-4">
       <pre class="bg-gray-200 p-4 rounded"><code>5S ribosomal RNA from Escherichia coli</code></pre>
@@ -64,6 +69,9 @@ t ranges from 1 to j - 5 such that it is allowed to pair with j.
         <img src="2.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md">
         <img src="2_central.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md">
         </div>
+        Maximum number of base pairs possible from RNA sequence - 42</p>
+        <p>
+          Number of base pairs in actual structure - 37
       </p>
       <p class="mb-4">
       <pre class="bg-gray-200 p-4 rounded"><code>Synthetic construct M-box riboswitch </code></pre>
@@ -71,6 +79,8 @@ t ranges from 1 to j - 5 such that it is allowed to pair with j.
         <img src="3.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md">
         <img src="3_central.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md">
         </div>
+        Maximum number of base pairs possible from RNA sequence - 55</p><p>
+          Number of base pairs in actual structure - 46
       </p>
       <p class="mb-4">
         <pre class="bg-gray-200 p-4 rounded"><code>Homo sapiens (human) RNA, 5S ribosomal 1 </code></pre>
@@ -78,6 +88,8 @@ t ranges from 1 to j - 5 such that it is allowed to pair with j.
           <img src="4.png" alt="RNA Structure" class="rounded-lg shadow-md" style="width: 500px;">
           <img src="4_central.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md">
           </div>
+          Maximum number of base pairs possible from RNA sequence - 40</p><p>
+            Number of base pairs in actual structure - 35
         </p>
         <p class="mb-4">
           <pre class="bg-gray-200 p-4 rounded"><code>Homo sapiens (human) small nucleolar RNA, C/D box 3A </code></pre>
@@ -85,6 +97,8 @@ t ranges from 1 to j - 5 such that it is allowed to pair with j.
             <img src="5.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md" style="height: 350px; width: 350px;">
             <img src="5_central.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md" style="height: 350px; width: 350px;">
             </div>
+            Maximum number of base pairs possible from RNA sequence - 75</p><p>
+              Number of base pairs in actual structure - 46
             <br><br>
             The structures generated by our algorithm and the real structure from RNAcentral.com do not match as the latter does not have a maximum energy structure, whereas our algorithm generates the structure with the maximum number of base pairs.
           </p>
@@ -95,8 +109,89 @@ t ranges from 1 to j - 5 such that it is allowed to pair with j.
       <h3 class="text-2xl font-semibold mb-4">Timing Analysis</h3>
       <p class="mb-4">
         The code runs in O(n^3) time complexity.
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" class="px-6 py-3">
+                  Sequence Length
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Time Taken (ms)
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  10
+                </th>
+                <td class="px-6 py-4">
+                  0.01
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  50
+                </th>
+                <td class="px-6 py-4">
+                  1.466
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  100
+                </th>
+                <td class="px-6 py-4">
+                  11.603
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  200
+                </th>
+                <td class="px-6 py-4">
+                  54.045
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  300
+                </th>
+                <td class="px-6 py-4">
+                  172.928
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  500
+                </th>
+                <td class="px-6 py-4">
+                  743.773
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  750
+                </th>
+                <td class="px-6 py-4">
+                  2617.65
+                </td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-800">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  1000
+                </th>
+                <td class="px-6 py-4">
+                  6683.985
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <img src="graph.png" alt="RNA Structure" class="w-96 rounded-lg shadow-md" style="height: 400px; width: 500px;">
       </p>
+      
     </div>
 
       <div class="bg-white rounded-lg shadow-md p-8 mb-8">
