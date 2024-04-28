@@ -142,7 +142,7 @@ int main()
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
     // Print the duration
-    std::cout << "Time taken by function: " << duration.count()/1000 << " milliseconds" << std::endl;
+    std::cout << "Time taken by function: " << duration.count() << " microseconds" << std::endl;
 
 
     cout << "\nThe maximum number of base pair matchings is: " << dp[0][n - 1].first << endl;

@@ -1,0 +1,6 @@
+10: 10 micro seconds
+50: 1466 micro seconds
+100: 11603 micro seconds
+200: 54045 "
+500: 743773 "
+1000: 6683985 "
