@@ -22,8 +22,6 @@ void findSecStruct(vector<vector<pair<int, set<pair<int, int>>>>> &dp, string rn
         }
     }
 
-    // cout << "1\n";
-
     for (int k = 5; k < n; k++)
     {
         for (int i = 0; i < n - k; i++)
@@ -73,21 +71,16 @@ void findSecStruct(vector<vector<pair<int, set<pair<int, int>>>>> &dp, string rn
 
             if (match_flag == 1)
             {
-                // cout << "4\n";
                 dp[i][j].second = dp[i][j - 1].second;
             }
             else if (match_flag == 2)
             {
-                // cout << "51\n";
                 if (max_t > 0)
                 {
                     dp[i][j].second.insert(dp[i][max_t - 1].second.begin(), dp[i][max_t - 1].second.end());
                 }
-                // cout << "52\n";
                 dp[i][j].second.insert(dp[max_t + 1][j - 1].second.begin(), dp[max_t + 1][j - 1].second.end());
-                // cout << "53\n";
                 dp[i][j].second.insert({j, max_t});
-                // cout << "54\n";
             }
         }
     }
@@ -99,50 +92,29 @@ int main()
     cin >> rna_seq;
 
     int n = rna_seq.size();
-    // cout << n << endl;
 
     vector<vector<pair<int, set<pair<int, int>>>>> dp(n, vector<pair<int, set<pair<int, int>>>>(n, {-1, set<pair<int, int>>()}));
 
-    // cout << "table: " << endl;
-
-    // for (int i = 0; i < n; i++)
-    // {
-    //     for (int j = 0; j < n; j++)
-    //     {
-    //         cout << dp[i][j].first << "\t";
-    //     }
-    //     cout << "\n";
-    // }
-
-    // cout << dp[3][2].second.size() << endl;
-
     findSecStruct(dp, rna_seq, n);
-    // cout << "answer: ";
-    // cout << dp[0][n - 1].first << endl;
 
-    // cout << "table: " << endl;
+    cout << "\nThe maximum number of base pair matchings is: " << dp[0][n - 1].first << endl;
 
-    // for (int i = 0; i < n; i++)
-    // {
-    //     for (int j = 0; j < n; j++)
-    //     {
-    //         cout << dp[i][j].first << "\t";
-    //     }
-    //     cout << "\n";
-    // }
+    cout << "\nThe matchings are (0 based indexing): " << endl;
 
-    // cout << "base pairs matched index: " << endl;
     string dot_bracket(n, '.');
-    // cout << dot_bracket << endl;
     for (auto pr : dp[0][n - 1].second)
     {
         // cout << pr.first << "--" << pr.second;
         // cout << endl;
         int left = min(pr.first, pr.second);
         int right = max(pr.first, pr.second);
+        cout << rna_seq[left] << "(" << left << ")"
+             << "--" << rna_seq[right] << "(" << right << ")";
+        cout << endl;
         dot_bracket[left] = '(';
         dot_bracket[right] = ')';
     }
+    cout << "\nDot bracket notation: " << endl;
     cout << dot_bracket << endl;
     return 0;
 }

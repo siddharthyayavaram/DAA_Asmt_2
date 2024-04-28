@@ -1,1 +1,5 @@
 .vscode/settings.json
+.out
+draw_rna-master/example_files/a.out
+draw_rna-master/example_files/gmon.out
+draw_rna-master/example_files/profiling
