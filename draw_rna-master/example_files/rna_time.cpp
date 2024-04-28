@@ -121,7 +121,7 @@ int main()
     // string rna_seq;
     // cin >> rna_seq;
 
-    int sequenceLength = 1000; // Change this to the desired length
+    int sequenceLength = 750; // Change this to the desired length
     string rna_seq = generateRandomSequence(sequenceLength);
     cout << "Random Sequence: " << rna_seq << endl;
 
